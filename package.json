@@ -1,6 +1,6 @@
 {
-  "name": "mcp-memori",
-  "version": "1.0.0",
+  "name": "@memorilabs/mcp",
+  "version": "0.0.2-beta",
   "description": "Memori MCP server — persistent AI memory with recall and augmentation tools",
   "main": "index.js",
   "type": "module",
@@ -11,7 +11,9 @@
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
   },
   "files": [
-    "build"
+    "build",
+    "README.md",
+    "LICENSE"
   ],
   "keywords": [
     "mcp",
