@@ -1,5 +1,6 @@
 {
   "name": "@memorilabs/mcp",
+  "mcpName": "io.github.MemoriLabs/mcp-memori",
   "version": "1.0.0",
   "description": "Memori MCP server — persistent AI memory with recall and augmentation tools",
   "main": "index.js",
