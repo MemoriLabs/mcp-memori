@@ -23,6 +23,7 @@ Memori was evaluated on the LoCoMo benchmark for long-conversation memory and ac
 Compared with other retrieval-based memory systems, Memori outperformed Zep, LangMem, and Mem0 while reducing prompt size by roughly **67% vs. Zep** and lowering context cost by more than **20x vs. full-context prompting**.
 
 Read the [benchmark overview](https://memorilabs.ai/benchmark) or download the [paper](https://arxiv.org/abs/2603.19935).
+
 ---
 
 ## How It Works
