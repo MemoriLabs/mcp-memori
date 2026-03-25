@@ -1,7 +1,7 @@
 {
-  "name": "@memorilabs/mcp",
-  "mcpName": "io.github.MemoriLabs/mcp-memori",
-  "version": "1.0.1",
+  "name": "@memorilabs/memori-mcp",
+  "mcpName": "io.github.MemoriLabs/memori-mcp",
+  "version": "1.0.0",
   "description": "Memori MCP server — persistent AI memory with recall and augmentation tools",
   "main": "index.js",
   "type": "module",
@@ -29,7 +29,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/memorilabs/mcp-memori"
+    "url": "https://github.com/memorilabs/memori-mcp.git"
   },
   "devDependencies": {
     "@types/node": "^22.19.2",
