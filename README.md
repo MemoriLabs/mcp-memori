@@ -64,7 +64,8 @@ export MEMORI_PROCESS_ID="my_agent"   # optional
 
 ## Client Setup
 
-### Claude Code
+<details>
+<summary><strong>Claude Code</strong></summary>
 
 **Via CLI:**
 
@@ -95,9 +96,10 @@ claude mcp add --transport http memori https://api.memorilabs.ai/mcp/ \
 
 Run `/mcp` inside Claude Code to verify the server status.
 
----
+</details>
 
-### Cursor
+<details>
+<summary><strong>Cursor</strong></summary>
 
 Create `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project-level):
 
@@ -118,9 +120,10 @@ Create `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project-level):
 
 Restart Cursor after saving.
 
----
+</details>
 
-### OpenAI Codex
+<details>
+<summary><strong>OpenAI Codex</strong></summary>
 
 Add to `~/.codex/config.toml`:
 
@@ -137,9 +140,10 @@ X-Memori-Process-Id = "${MEMORI_PROCESS_ID}"
 
 You can also add the server from the Codex UI: **Settings > MCP Servers > + Add Server**.
 
----
+</details>
 
-### Warp
+<details>
+<summary><strong>Warp</strong></summary>
 
 Add to your Warp MCP configuration:
 
@@ -156,9 +160,10 @@ Add to your Warp MCP configuration:
 }
 ```
 
----
+</details>
 
-### Antigravity
+<details>
+<summary><strong>Antigravity</strong></summary>
 
 Open **Manage MCP Servers** and edit `mcp_config.json`:
 
@@ -179,9 +184,10 @@ Open **Manage MCP Servers** and edit `mcp_config.json`:
 
 Save and restart Antigravity to refresh the tools list.
 
----
+</details>
 
-### LangChain
+<details>
+<summary><strong>LangChain</strong></summary>
 
 ```python
 from langchain_mcp_adapters.client import MultiServerMCPClient
@@ -201,9 +207,10 @@ client = MultiServerMCPClient({
 tools = await client.get_tools()
 ```
 
----
+</details>
 
-### Slack
+<details>
+<summary><strong>Slack</strong></summary>
 
 Set headers dynamically per request using the Slack user ID from the event payload:
 
@@ -217,9 +224,10 @@ const memoriHeaders = {
 
 Pass these headers in every MCP tool call. Use `process_id` to isolate memories by workspace so preferences from personal workspaces don't bleed into team ones.
 
----
+</details>
 
-### Notion
+<details>
+<summary><strong>Notion</strong></summary>
 
 Set entity and process IDs from the Notion API user object:
 
@@ -230,6 +238,8 @@ const memoriHeaders = {
   "X-Memori-Process-Id": "notion_writing_assistant",
 };
 ```
+
+</details>
 
 ---
 
