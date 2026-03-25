@@ -2,6 +2,8 @@
 
 A stdio MCP server that bridges to the [Memori](https://memorilabs.ai) API for persistent AI memory.
 
+[![mcp-memori MCP server](https://glama.ai/mcp/servers/MemoriLabs/mcp-memori/badges/card.svg)](https://glama.ai/mcp/servers/MemoriLabs/mcp-memori)
+
 ## Tools
 
 - **recall** — Retrieve relevant memories for a query
