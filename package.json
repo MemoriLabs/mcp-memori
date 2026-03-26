@@ -29,7 +29,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/memorilabs/memori-mcp.git"
+    "url": "https://github.com/MemoriLabs/memori-mcp"
   },
   "devDependencies": {
     "@types/node": "^22.19.2",
