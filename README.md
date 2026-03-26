@@ -1,8 +1,8 @@
-# mcp-memori
+# Memori MCP
 
 > Persistent AI memory for any MCP-compatible agent — no SDK required.
 
-**mcp-memori** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts before answering, store durable preferences after responding, and maintain context across sessions.
+**memori-mcp** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts before answering, store durable preferences after responding, and maintain context across sessions.
 
 ---
 
