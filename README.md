@@ -6,14 +6,19 @@
 
 ---
 
-## Why Memori
+## Why Memori MCP?
 
-Without persistent memory, every session starts from zero. With Memori, your agent:
+Memori turns stateless agents into **stateful systems** by providing structured, persistent memory that works across sessions and workflows.
 
-- **Remembers preferences** — "I prefer Python and use `uv` for dependency management" is recalled in future sessions automatically
-- **Personalizes responses** — past context shapes every answer without manual re-prompting
-- **Isolates memory by user and workflow** — scoped per `entity_id` and `process_id` so preferences never bleed across users or projects
-- **Works with any MCP client** — no SDK, no code changes, just config
+1. **Persistent state beyond prompts** — Most agents rely on prompt context and lose state between runs. Memori provides **durable, structured memory** so agents can retain facts, decisions, and outcomes over time.
+2. **Memory from execution (not just natural language)** — Traditional systems extract memory from chat. Memori builds memory from **agent execution itself** — including tool calls, decisions, and results. This enables true **agent-native memory**, not just conversational recall.
+3. **Lower cost, higher accuracy** — Instead of expanding prompt context, Memori retrieves only what matters.
+   - Significantly reduced token usage
+   - Faster responses
+   - Improved accuracy vs long-context approaches
+4. **Works with any MCP client and production-ready** - No SDK, no code changes, just config
+
+Memori is **state infrastructure for production agents** — enabling persistent memory, efficient retrieval, and structured context across both natural language and agent execution.
 
 
 ## LoCoMo Benchmark
