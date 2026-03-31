@@ -98,7 +98,7 @@ If you receive `401` errors, double-check your `X-Memori-API-Key` value. See the
 
 ## Links
 
-- [Memori Cloud](https://memorilabs.ai)
+- [Memori Cloud](https://memorilabs.ai/docs/memori-cloud)
 - [Get an API key](https://app.memorilabs.ai)
 - [MCP Overview docs](https://memorilabs.ai/docs/memori-cloud/mcp/overview)
 - [Client Setup docs](https://memorilabs.ai/docs/memori-cloud/mcp/client-setup)
