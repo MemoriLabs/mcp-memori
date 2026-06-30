@@ -37,13 +37,13 @@ The server exposes seven tools:
 
 | Tool | When to call | What it does |
 |------|-------------|--------------|
-| `memori_recall` | Start of each user turn | Fetches targeted memories for the current query |
-| `memori_recall_summary` | Session starts, daily briefs, status overviews | Fetches broad memory state across all prior context |
-| `memori_compaction` | After context compaction | Restores working state, active tasks, and open loops |
-| `memori_advanced_augmentation` | After composing a response | Stores durable facts and preferences for future sessions |
-| `memori_feedback` | When the user flags a memory issue or praises a result | Reports irrelevant, missing, stale, or useful memory |
-| `memori_signup` | When the user explicitly asks and provides an email | Requests a Memori account and API key |
-| `memori_quota` | When the user asks about usage or quota errors appear | Checks current memory usage and limits |
+| `memori_recall` | Start of each user turn | Fetches relevant memories at the start of a user turn |
+| `memori_recall_summary` | Session starts, daily briefs, status updates, project overviews | Fetches broad memory state for session starts, daily briefs, status updates, and project overviews |
+| `memori_compaction` | After context compaction | Fetches a structured post-compaction brief so an agent can resume operational work |
+| `memori_advanced_augmentation` | After composing a response | Stores durable memory after the agent has drafted a response |
+| `memori_feedback` | When the user flags a memory issue or praises a result | Reports irrelevant, missing, stale, or especially useful memory behavior |
+| `memori_signup` | When the user explicitly asks and provides an email | Requests a Memori account/API key when the user explicitly asks |
+| `memori_quota` | When the user asks about usage or quota errors appear | Checks current memory usage and limits when the user asks or quota errors appear |
 
 ### Example Agent Flow
 
@@ -78,19 +78,20 @@ export MEMORI_PROCESS_ID="my_agent"   # optional
 
 | Property | Value |
 |----------|-------|
-| Endpoint | `https://api.memorilabs.ai/mcp/` |
-| Transport | Stateless HTTP |
-| Auth | API key via request headers |
+| **Server** | Memori MCP |
+| **Endpoint** | `https://api.memorilabs.ai/mcp/` |
+| **Transport** | Stateless HTTP |
+| **Auth** | API key via request headers |
 
 ### Headers
 
 | Header | Required | Description |
 |--------|----------|-------------|
-| `X-Memori-API-Key` | Yes | Your Memori API key |
-| `X-Memori-Entity-Id` | Yes | Stable end-user identifier (e.g. `user_123`) |
-| `X-Memori-Process-Id` | No | Process, app, or workflow identifier for memory isolation |
+| `X-Memori-API-Key` | Yes | Your Memori API key from [app.memorilabs.ai](https://app.memorilabs.ai) |
+| `X-Memori-Entity-Id` | Yes | Stable end-user or entity identifier (e.g. `user_123`) |
+| `X-Memori-Process-Id` | No | Optional process, app, or workflow identifier (e.g. `my_agent`) for memory isolation |
 
-`session_id` is derived automatically as `<entity_id>-<UTC year-month-day:hour>` — you do not need to provide it.
+`session_id` is derived automatically as `<entity_id>-<UTC year-month-day:hour>`. You do not need to provide it.
 
 ---
 
