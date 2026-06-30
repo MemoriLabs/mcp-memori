@@ -2,7 +2,7 @@
 
 > Persistent AI memory for any MCP-compatible agent — no SDK required.
 
-**memori-mcp** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts before answering, retrieve broad state summaries, restore working state after context compaction, store durable preferences after responding, and maintain context across sessions.
+**memori-mcp** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts, retrieve broad state summaries, restore working state after context compaction, store durable preferences after responding, and maintain context across sessions.
 
 ---
 
@@ -47,13 +47,14 @@ The server exposes seven tools:
 
 ### Example Agent Flow
 
-Given the message: *"I prefer Python and use uv for dependency management."*
+Given the user message: *"I prefer Python and use uv for dependency management."*
 
 1. Agent calls `memori_recall` with the user message as `query`
-2. Agent uses any returned facts to compose a response
-3. Agent calls `memori_advanced_augmentation` with the user message and response
+2. Agent composes a response using any returned facts
+3. Agent sends the response to the user
+4. Agent calls `memori_advanced_augmentation` with the `user_message` and `assistant_response`
 
-On a later turn — *"Write a hello world script"* — the agent recalls the Python + `uv` preference and personalizes its response automatically.
+On a later turn like *"Write a hello world script"*, the agent recalls the Python + uv preference and personalizes its response.
 
 ---
 
@@ -95,12 +96,13 @@ export MEMORI_PROCESS_ID="my_agent"   # optional
 
 ## Verifying the Connection
 
-After configuring any client:
+After configuring your client, verify the setup:
 
-1. Confirm the MCP server shows as **connected** in your client's UI
-2. Check that `memori_recall`, `memori_recall_summary`, `memori_compaction`, and `memori_advanced_augmentation` appear in the tools list
-3. Send a test message — `memori_recall` should return a response (even if empty for new entities)
-4. Verify `memori_advanced_augmentation` returns `memory being created`
+- MCP server shows as connected and healthy in your client UI
+- Tools list includes `memori_recall`, `memori_recall_summary`, `memori_compaction`, and `memori_advanced_augmentation`
+- Calls return non-401 responses
+- `memori_recall` returns memories for known entities
+- `memori_advanced_augmentation` accepts durable user/assistant turn data
 
 If you receive `401` errors, double-check your `X-Memori-API-Key` value. See the [Troubleshooting guide](https://memorilabs.ai/docs/memori-cloud/support/troubleshooting) for more help.
 

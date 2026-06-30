@@ -60,11 +60,11 @@ server.registerTool(
   {
     title: "Recall Memories",
     description:
-      "Retrieve relevant memories for a given query. Call at the start of user turns to fetch prior context, preferences, facts, decisions, and constraints.",
+      "Fetches relevant memories at the start of a user turn.",
     inputSchema: {
       query: z
         .string()
-        .describe("The user message or search query to recall memories for"),
+        .describe("The latest user message — typically passed verbatim."),
       projectId: z.string().optional().describe("Optional project scope"),
       sessionId: z.string().optional().describe("Optional session scope"),
       dateStart: z.string().optional().describe("ISO date range start"),
@@ -123,7 +123,7 @@ server.registerTool(
   {
     title: "Recall Memory Summary",
     description:
-      "Fetch broad memory state for session starts, daily briefs, status updates, and project overviews. Use when a high-level snapshot of prior context is needed rather than a targeted recall.",
+      "Fetches broad memory state for session starts, daily briefs, status updates, and project overviews.",
     inputSchema: {
       projectId: z.string().optional().describe("Optional project scope"),
       sessionId: z.string().optional().describe("Optional session scope"),
@@ -156,7 +156,7 @@ server.registerTool(
   {
     title: "Post-Compaction Memory Brief",
     description:
-      "Fetch a structured post-compaction brief so the agent can resume operational work after context compaction or a long-running workflow loses conversational detail. Not a replacement for precise recall — use memori_recall for targeted search.",
+      "Fetches a structured post-compaction brief so an agent can resume operational work after context compaction or a long-running workflow loses conversational detail.",
     inputSchema: {
       projectId: z.string().optional().describe("Optional project scope"),
       sessionId: z.string().optional().describe("Optional session scope"),
@@ -191,10 +191,10 @@ server.registerTool(
   {
     title: "Store Memory",
     description:
-      "Store durable facts and preferences after drafting a response. Call after responding to persist user context across sessions.",
+      "Stores durable memory after the agent has drafted a response.",
     inputSchema: {
-      user_message: z.string().describe("The full user message"),
-      assistant_response: z.string().describe("The full assistant response"),
+      user_message: z.string().describe("The user's message for this turn."),
+      assistant_response: z.string().describe("The assistant's response for this turn."),
       projectId: z.string().optional().describe("Optional project scope"),
       sessionId: z.string().optional().describe("Optional session scope"),
       summary: z.string().optional().describe("Optional turn summary"),
@@ -229,7 +229,7 @@ server.registerTool(
   {
     title: "Memory Feedback",
     description:
-      "Report irrelevant, missing, stale, or especially useful memory behavior. Use when the user flags a memory quality problem or explicitly praises a recall result.",
+      "Reports irrelevant, missing, stale, or especially useful memory behavior.",
     inputSchema: {
       feedback: z
         .string()
@@ -267,7 +267,7 @@ server.registerTool(
   {
     title: "Sign Up for Memori",
     description:
-      "Request a Memori account and API key when the user explicitly asks and provides an email address.",
+      "Requests a Memori account/API key when the user explicitly asks and provides an email address.",
     inputSchema: {
       email: z
         .string()
@@ -299,7 +299,7 @@ server.registerTool(
   {
     title: "Check Memory Quota",
     description:
-      "Check current memory usage and limits. Use when the user asks about usage or quota errors appear.",
+      "Checks current memory usage and limits when the user asks or quota errors appear.",
     inputSchema: {},
   },
   async () => {
