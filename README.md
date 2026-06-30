@@ -2,7 +2,7 @@
 
 > Persistent AI memory for any MCP-compatible agent — no SDK required.
 
-**memori-mcp** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts before answering, store durable preferences after responding, and maintain context across sessions.
+**memori-mcp** is the official [Memori](https://memorilabs.ai) MCP server. Connect it to your AI agent to give it long-term memory: recall relevant facts before answering, retrieve broad state summaries, restore working state after context compaction, store durable preferences after responding, and maintain context across sessions.
 
 ---
 
@@ -33,20 +33,25 @@ Read the [benchmark overview](https://memorilabs.ai/benchmark) or download the [
 
 ## How It Works
 
-The server exposes two tools:
+The server exposes seven tools:
 
 | Tool | When to call | What it does |
 |------|-------------|--------------|
-| `recall` | Start of each user turn | Fetches relevant memories for the current query |
-| `advanced_augmentation` | After composing a response | Stores durable facts and preferences for future sessions |
+| `memori_recall` | Start of each user turn | Fetches targeted memories for the current query |
+| `memori_recall_summary` | Session starts, daily briefs, status overviews | Fetches broad memory state across all prior context |
+| `memori_compaction` | After context compaction | Restores working state, active tasks, and open loops |
+| `memori_advanced_augmentation` | After composing a response | Stores durable facts and preferences for future sessions |
+| `memori_feedback` | When the user flags a memory issue or praises a result | Reports irrelevant, missing, stale, or useful memory |
+| `memori_signup` | When the user explicitly asks and provides an email | Requests a Memori account and API key |
+| `memori_quota` | When the user asks about usage or quota errors appear | Checks current memory usage and limits |
 
 ### Example Agent Flow
 
 Given the message: *"I prefer Python and use uv for dependency management."*
 
-1. Agent calls `recall` with the user message as `query`
+1. Agent calls `memori_recall` with the user message as `query`
 2. Agent uses any returned facts to compose a response
-3. Agent calls `advanced_augmentation` with the user message and response
+3. Agent calls `memori_advanced_augmentation` with the user message and response
 
 On a later turn — *"Write a hello world script"* — the agent recalls the Python + `uv` preference and personalizes its response automatically.
 
@@ -93,9 +98,9 @@ export MEMORI_PROCESS_ID="my_agent"   # optional
 After configuring any client:
 
 1. Confirm the MCP server shows as **connected** in your client's UI
-2. Check that `recall` and `advanced_augmentation` appear in the tools list
-3. Send a test message — `recall` should return a response (even if empty for new entities)
-4. Verify `advanced_augmentation` returns `memory being created`
+2. Check that `memori_recall`, `memori_recall_summary`, `memori_compaction`, and `memori_advanced_augmentation` appear in the tools list
+3. Send a test message — `memori_recall` should return a response (even if empty for new entities)
+4. Verify `memori_advanced_augmentation` returns `memory being created`
 
 If you receive `401` errors, double-check your `X-Memori-API-Key` value. See the [Troubleshooting guide](https://memorilabs.ai/docs/memori-cloud/support/troubleshooting) for more help.
 
@@ -107,3 +112,4 @@ If you receive `401` errors, double-check your `X-Memori-API-Key` value. See the
 - [Get an API key](https://app.memorilabs.ai)
 - [MCP Overview docs](https://memorilabs.ai/docs/memori-cloud/mcp/overview)
 - [Client Setup docs](https://memorilabs.ai/docs/memori-cloud/mcp/client-setup)
+- [Agent Skills docs](https://memorilabs.ai/docs/memori-cloud/mcp/agent-skills)

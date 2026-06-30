@@ -6,12 +6,12 @@
     "url": "https://github.com/MemoriLabs/memori-mcp",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@memorilabs/memori-mcp",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "transport": {
         "type": "stdio"
       },
@@ -22,6 +22,20 @@
           "format": "string",
           "isSecret": true,
           "name": "MEMORI_API_KEY"
+        },
+        {
+          "description": "Stable identifier for the end user or entity (e.g. user_123 or your username). Required for memory attribution.",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": false,
+          "name": "MEMORI_ENTITY_ID"
+        },
+        {
+          "description": "Identifier for the agent, app, or workflow (e.g. claude-code or my_agent). Used to isolate memories per process.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "MEMORI_PROCESS_ID"
         }
       ]
     }
