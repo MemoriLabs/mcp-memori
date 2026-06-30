@@ -1,5 +1,7 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "memori-mcp",
+  "description": "Persistent AI memory for any MCP-compatible agent. Exposes memori_recall, memori_recall_summary, memori_compaction, memori_advanced_augmentation, memori_feedback, memori_signup, and memori_quota.",
   "maintainers": [
     "jayyao18"
   ]

@@ -5,23 +5,18 @@ node_modules/
 dist/
 build/
 
-# Environment Variables
+# Environment variables
 .env
 .env.*
 !.env.example
-
-# Testing
-coverage/
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
-# OS / Editor Files
+# OS / Editor
 .DS_Store
 .vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
